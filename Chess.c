@@ -7,14 +7,14 @@ enum availibility{OCCUPIED, EMPTY, ATTACKABLE};
 
 char chess_board[8][8][3] =
     {
-        {{'B', 'R', '0'}, {'B', 'K', '0'}, {'B', 'B', '0'}, {'B', 'Q', '0'}, {'B', 'G', '0'}, {'B', 'B', '0'}, {'B', 'K', '0'}, {'B', 'R', '0'}},
+        {{'B', 'R', '0'}, {'B', 'N', '0'}, {'B', 'B', '0'}, {'B', 'Q', '0'}, {'B', 'K', '0'}, {'B', 'B', '0'}, {'B', 'N', '0'}, {'B', 'R', '0'}},
         {{'B', 'P', '0'}, {'B', 'P', '0'}, {'B', 'P', '0'}, {'B', 'P', '0'}, {'B', 'P', '0'}, {'B', 'P', '0'}, {'B', 'P', '0'}, {'B', 'P', '0'}},
         {{'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}},
         {{'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}},
         {{'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}},
         {{'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}, {'_', '_', '0'}},
         {{'W', 'P', '0'}, {'W', 'P', '0'}, {'W', 'P', '0'}, {'W', 'P', '0'}, {'W', 'P', '0'}, {'W', 'P', '0'}, {'W', 'P', '0'}, {'W', 'P', '0'}},
-        {{'W', 'R', '0'}, {'W', 'K', '0'}, {'W', 'B', '0'}, {'W', 'Q', '0'}, {'W', 'G', '0'}, {'W', 'B', '0'}, {'W', 'K', '0'}, {'W', 'R', '0'}}
+        {{'W', 'R', '0'}, {'W', 'N', '0'}, {'W', 'B', '0'}, {'W', 'Q', '0'}, {'W', 'K', '0'}, {'W', 'B', '0'}, {'W', 'N', '0'}, {'W', 'R', '0'}}
     };
 
 int positionX, positionY;
@@ -177,7 +177,7 @@ void pieceMove()
     case 'R':
         getRookMoves();
         break;
-    case 'K':
+    case 'N':
         getKnightMoves(); 
         break;
     case 'B':
@@ -186,7 +186,7 @@ void pieceMove()
     case 'Q':
         getQueenMoves();
         break;
-    case 'G':
+    case 'K':
         getKingMoves();
         break;
     }
@@ -683,7 +683,7 @@ void promotion()
             chess_board[tempPositionX][tempPositionY][1] = 'R';
             break;
         case 2:
-            chess_board[tempPositionX][tempPositionY][1] = 'K';
+            chess_board[tempPositionX][tempPositionY][1] = 'N';
             break;
         case 3:
             chess_board[tempPositionX][tempPositionY][1] = 'B';
@@ -737,7 +737,7 @@ void capturing()
 
 int endGame()
 {
-    if (capturedPiece[1] == 'G')
+    if (capturedPiece[1] == 'K')
         return 1;
     else
         return 0;
