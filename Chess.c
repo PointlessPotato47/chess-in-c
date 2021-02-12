@@ -50,6 +50,7 @@ void resetCapturing();
 
 int castling();
 int canPromote();
+int isMoveValidable(int a, int b);
 
 void kingSideCastle();
 void queenSideCastle();
@@ -487,49 +488,49 @@ void getQueenMoves()
 
 void getKnightMoves()
 {
-    if (chess_board[positionX - 2][positionY + 1][0] != cplayer && positionX - 2 >= 0 && positionY + 1 <= 7)
+    if (isMoveValidable(-2, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y + 2);
         availibleMoves[m] = (positionX - 2) * 10 + (positionY + 1);
         m++;
     }
-    if (chess_board[positionX - 1][positionY + 2][0] != cplayer && positionX - 1 >= 0 && positionY + 2 <= 7)
+    if (isMoveValidable(-1, 2) == 1)
     {
         printf("%d)%c%d ", m, x + 2 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY + 2);
         m++;
     }
-    if (chess_board[positionX + 1][positionY + 2][0] != cplayer && positionX + 1 <= 7 && positionY + 1 <= 7)
+    if (isMoveValidable(1, 2) == 1)
     {
         printf("%d)%c%d ", m, x + 2 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY + 2);
         m++;
     }
-    if (chess_board[positionX + 2][positionY + 1][0] != cplayer && positionX + 2 <= 7 && positionY + 1 <= 7)
+    if (isMoveValidable(2, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y - 2);
         availibleMoves[m] = (positionX + 2) * 10 + (positionY + 1);
         m++;
     }
-    if (chess_board[positionX + 2][positionY - 1][0] != cplayer && positionX + 2 <= 7 && positionY - 1 >= 0)
+    if (isMoveValidable(2, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y - 2);
         availibleMoves[m] = (positionX + 2) * 10 + (positionY - 1);
         m++;
     }
-    if (chess_board[positionX + 1][positionY - 2][0] != cplayer && positionX + 1 <= 7 && positionY - 2 >= 0)
+    if (isMoveValidable(1, -2) == 1)
     {
         printf("%d)%c%d ", m, x - 2 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY - 2);
         m++;
     }
-    if (chess_board[positionX - 1][positionY - 2][0] != cplayer && positionX - 1 >= 0 && positionY - 2 >= 0)
+    if (isMoveValidable(-1, -2) == 1)
     {
         printf("%d)%c%d ", m, x - 2 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY - 2);
         m++;
     }
-    if (chess_board[positionX - 2][positionY - 1][0] != cplayer && positionX - 2 >= 0 && positionY - 1 >= 0)
+    if (isMoveValidable(-2, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y + 2);
         availibleMoves[m] = (positionX - 2) * 10 + (positionY - 1);
@@ -539,49 +540,49 @@ void getKnightMoves()
 
 void getKingMoves()
 {
-    if (chess_board[positionX - 1][positionY - 1][0] != cplayer && positionX - 1 >= 0 && positionY - 1 >= 0)
+    if (isMoveValidable(-1, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY - 1);
         m++;
     }
-    if (chess_board[positionX - 1][positionY][0] != cplayer && positionX - 1 >= 0)
+    if (isMoveValidable(-1, 0) == 1)
     {
         printf("%d)%c%d ", m, x + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY);
         m++;
     }
-    if (chess_board[positionX - 1][positionY + 1][0] != cplayer && positionX - 1 >= 0 && positionY + 1 <= 7)
+    if (isMoveValidable(-1, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY + 1);
         m++;
     }
-    if (chess_board[positionX][positionY - 1][0] != cplayer && positionY - 1 >= 0)
+    if (isMoveValidable(0, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y);
         availibleMoves[m] = (positionX) * 10 + (positionY - 1);
         m++;
     }
-    if (chess_board[positionX][positionY + 1][0] != cplayer && positionY + 1 <= 7)
+    if (isMoveValidable(0, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y);
         availibleMoves[m] = (positionX) * 10 + (positionY + 1);
         m++;
     }
-    if (chess_board[positionX + 1][positionY - 1][0] != cplayer && positionX + 1 <= 7 && positionY - 1 >= 0)
+    if (isMoveValidable(1, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY - 1);
         m++;
     }
-    if (chess_board[positionX + 1][positionY][0] != cplayer && positionX + 1 <= 7)
+    if (isMoveValidable(1, 0) == 1)
     {
         printf("%d)%c%d ", m, x + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY);
         m++;
     }
-    if (chess_board[positionX + 1][positionY + 1][0] != cplayer && positionX + 1 <= 7 && positionY + 1 <= 7)
+    if (isMoveValidable(1, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY + 1);
@@ -595,6 +596,14 @@ void getKingMoves()
         printf("%d)King Side Castle", m);
     else if (castling() == 1)
         printf("%d)Queen Side Castle", m);
+}
+
+int isMoveValidable(int a, int b)
+{
+    if (positionX + a >= 0 && positionY + b >= 0 && positionX + a <= 7 && positionY + b <= 7 && chess_board[positionX + a][positionY + b][0] != cplayer)
+        return 1;
+    else
+        return 0;
 }
 
 int castling()
