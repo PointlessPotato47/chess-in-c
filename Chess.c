@@ -50,7 +50,7 @@ void resetCapturing();
 
 int castling();
 int canPromote();
-int isMoveValidable(int a, int b);
+int isMoveValid(int a, int b);
 
 void kingSideCastle();
 void queenSideCastle();
@@ -488,49 +488,49 @@ void getQueenMoves()
 
 void getKnightMoves()
 {
-    if (isMoveValidable(-2, 1) == 1)
+    if (isMoveValid(-2, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y + 2);
         availibleMoves[m] = (positionX - 2) * 10 + (positionY + 1);
         m++;
     }
-    if (isMoveValidable(-1, 2) == 1)
+    if (isMoveValid(-1, 2) == 1)
     {
         printf("%d)%c%d ", m, x + 2 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY + 2);
         m++;
     }
-    if (isMoveValidable(1, 2) == 1)
+    if (isMoveValid(1, 2) == 1)
     {
         printf("%d)%c%d ", m, x + 2 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY + 2);
         m++;
     }
-    if (isMoveValidable(2, 1) == 1)
+    if (isMoveValid(2, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y - 2);
         availibleMoves[m] = (positionX + 2) * 10 + (positionY + 1);
         m++;
     }
-    if (isMoveValidable(2, -1) == 1)
+    if (isMoveValid(2, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y - 2);
         availibleMoves[m] = (positionX + 2) * 10 + (positionY - 1);
         m++;
     }
-    if (isMoveValidable(1, -2) == 1)
+    if (isMoveValid(1, -2) == 1)
     {
         printf("%d)%c%d ", m, x - 2 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY - 2);
         m++;
     }
-    if (isMoveValidable(-1, -2) == 1)
+    if (isMoveValid(-1, -2) == 1)
     {
         printf("%d)%c%d ", m, x - 2 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY - 2);
         m++;
     }
-    if (isMoveValidable(-2, -1) == 1)
+    if (isMoveValid(-2, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y + 2);
         availibleMoves[m] = (positionX - 2) * 10 + (positionY - 1);
@@ -540,49 +540,49 @@ void getKnightMoves()
 
 void getKingMoves()
 {
-    if (isMoveValidable(-1, -1) == 1)
+    if (isMoveValid(-1, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY - 1);
         m++;
     }
-    if (isMoveValidable(-1, 0) == 1)
+    if (isMoveValid(-1, 0) == 1)
     {
         printf("%d)%c%d ", m, x + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY);
         m++;
     }
-    if (isMoveValidable(-1, 1) == 1)
+    if (isMoveValid(-1, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y + 1);
         availibleMoves[m] = (positionX - 1) * 10 + (positionY + 1);
         m++;
     }
-    if (isMoveValidable(0, -1) == 1)
+    if (isMoveValid(0, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y);
         availibleMoves[m] = (positionX) * 10 + (positionY - 1);
         m++;
     }
-    if (isMoveValidable(0, 1) == 1)
+    if (isMoveValid(0, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y);
         availibleMoves[m] = (positionX) * 10 + (positionY + 1);
         m++;
     }
-    if (isMoveValidable(1, -1) == 1)
+    if (isMoveValid(1, -1) == 1)
     {
         printf("%d)%c%d ", m, x - 1 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY - 1);
         m++;
     }
-    if (isMoveValidable(1, 0) == 1)
+    if (isMoveValid(1, 0) == 1)
     {
         printf("%d)%c%d ", m, x + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY);
         m++;
     }
-    if (isMoveValidable(1, 1) == 1)
+    if (isMoveValid(1, 1) == 1)
     {
         printf("%d)%c%d ", m, x + 1 + 64, y - 1);
         availibleMoves[m] = (positionX + 1) * 10 + (positionY + 1);
@@ -598,7 +598,7 @@ void getKingMoves()
         printf("%d)Queen Side Castle", m);
 }
 
-int isMoveValidable(int a, int b)
+int isMoveValid(int a, int b)
 {
     if (positionX + a >= 0 && positionY + b >= 0 && positionX + a <= 7 && positionY + b <= 7 && chess_board[positionX + a][positionY + b][0] != cplayer)
         return 1;
